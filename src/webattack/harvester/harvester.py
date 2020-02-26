@@ -352,12 +352,12 @@ class SETHandler(BaseHTTPRequestHandler):
             line = line.rstrip()
             # if regular expression hit on user fields then do different
             match = re.search(
-                "Email|email|login|logon|Logon|Login|user|username|Username|User", line)
+                "username", line)
             if match:
                 print(bcolors.RED + "POSSIBLE USERNAME FIELD FOUND: " + line + "\r" + bcolors.GREEN)
                 counter = 1
             match2 = re.search(
-                "pwd|pass|uid|uname|Uname|userid|userID|USER|USERNAME|PIN|pin|password|Password|secret|Secret|Pass", line)
+                "password", line)
             if match2:
                 # if you don't want to capture a password, turn this off, note
                 # not an exact science
