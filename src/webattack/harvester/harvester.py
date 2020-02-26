@@ -270,6 +270,42 @@ class SETHandler(BaseHTTPRequestHandler):
                 visits.write("hit\n")
                 # visits.close()
 
+            elif self.path.endswith(".css"):
+                self.send_response(200)
+                self.send_header('Content_type', 'text/css')
+                self.end_headers()
+                fileopen = open(requested_file, "r")
+                for line in fileopen:
+                    line = line.encode('utf-8')
+                    self.wfile.write(line)
+                visits.write("hit\n")
+
+            elif self.path.endswith(".jpg"):
+                self.send_response(200)
+                self.send_header('Content_type', 'image/jpg')
+                self.end_headers()
+                fileopen = open(requested_file, "rb")
+                for line in fileopen:
+                    self.wfile.write(line)
+                visits.write("hit\n")
+
+            elif self.path.endswith(".gif"):
+                self.send_response(200)
+                self.send_header('Content_type', 'image/gif')
+                self.end_headers()
+                fileopen = open(requested_file, "rb")
+                for line in fileopen:
+                    self.wfile.write(line)
+                visits.write("hit\n")
+
+            elif self.path.endswith(".png"):
+                self.send_response(200)
+                self.send_header('Content_type', 'image/png')
+                self.end_headers()
+                fileopen = open(requested_file, "rb")
+                for line in fileopen:
+                    self.wfile.write(line)
+
             else:
                 if os.path.isfile(requested_file):
                     self.send_response(200)
